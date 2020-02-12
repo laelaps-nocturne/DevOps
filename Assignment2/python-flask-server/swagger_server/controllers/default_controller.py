@@ -13,11 +13,11 @@ def add_student(body):  # noqa: E501
     :param body: Student object that needs to be added
     :type body: dict | bytes
 
-    :rtype: int
+    :rtype: str
     """
     if connexion.request.is_json:
         body = Student.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+    return student_service.add_student(body)
 
 
 def delete_student(student_id):  # noqa: E501
