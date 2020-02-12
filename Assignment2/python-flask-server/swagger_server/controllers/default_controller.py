@@ -3,7 +3,6 @@ import six
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server import util
-from swagger_server.service import student_service
 
 
 def add_student(body):  # noqa: E501
@@ -14,11 +13,11 @@ def add_student(body):  # noqa: E501
     :param body: Student object that needs to be added
     :type body: dict | bytes
 
-    :rtype: str
+    :rtype: int
     """
     if connexion.request.is_json:
         body = Student.from_dict(connexion.request.get_json())  # noqa: E501
-    return student_service.add_student(body)
+    return 'do some magic!'
 
 
 def delete_student(student_id):  # noqa: E501
@@ -31,10 +30,7 @@ def delete_student(student_id):  # noqa: E501
 
     :rtype: Student
     """
-    res = student_service.delete_student(student_id)
-    if res:
-        return res
-    return 'Not Found', 404
+    return 'do some magic!'
 
 
 def get_student_by_id(student_id, subject=None):  # noqa: E501
@@ -49,7 +45,4 @@ def get_student_by_id(student_id, subject=None):  # noqa: E501
 
     :rtype: Student
     """
-    res = student_service.get_student_by_id(student_id, subject=subject)
-    if res:
-        return res
-    return 'Not Found', 404
+    return 'do some magic!'
